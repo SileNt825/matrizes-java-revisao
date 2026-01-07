@@ -1,69 +1,68 @@
 import java.util.Scanner;
 
-public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+public static void main(String[] args) throws InterruptedException {
+    Scanner sc = new Scanner(System.in);
 
-        
-
-     int[][] matrix = {
-        {1, 2, 3, 4, 6 },
-        {5, 6, 7, 8, 4},
-        {9, 10, 11, 12, 17},
-        {13, 14, 15, 16, 19},
-        {18, 16, 1, 3, 6},
-    
+    int[][] matrix = {
+            {1, 2, 3, 4, 6},
+            {5, 6, 7, 8, 4},
+            {9, 10, 11, 12, 17},
+            {13, 14, 15, 16, 19},
+            {18, 16, 1, 3, 6},
     };
+    int n = matrix.length;
 
-       int n = matrix.length;
-
-       int a = 1;
-    do{
-        System.out.println("[1 - começar]");    
+    int a = 1;
+    do {
+        System.out.println("[1 - começar]");
         System.out.println("[0 - sair]");
 
-
-        
-       
         int k = 0;
         int escolha = sc.nextInt();
-        switch(escolha){
-            
+        switch (escolha) {
+
             case 1:
                 System.out.println("quantas voltas voce quer dar?");
                 int voltas = sc.nextInt();
 
-                while(k <= voltas){
-       for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (i > j || i == j) {
-                    System.out.print(matrix[i][j] + " ");
-                } else {
-                    System.out.print(". ");
-                }
-            }
-            System.out.println();
-        }
+                while (k <= voltas) {
+                    System.out.print("\033[H\033[2J");
+                    System.out.flush();
+                    for (int i = 0; i < 1; i++) {
+                        System.out.println();
+                    }
+                    for (int i = 0; i < n; i++) {
+                        for (int j = 0; j < n; j++) {
+                            if (i > j || i == j) {
+                                System.out.print(matrix[i][j] + " ");
+                            } else {
+                                System.out.print(". ");
+                            }
+                        }
+                        System.out.println();
+                        Thread.sleep(100);
+                    }
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (i < j || i == j) {
-                    System.out.print(matrix[i][j] + " ");
-                } else {
-                    System.out.print(". ");
+                    for (int i = 0; i < n; i++) {
+                        for (int j = 0; j < n; j++) {
+                            if (i < j || i == j) {
+                                System.out.print(matrix[i][j] + " ");
+                            } else {
+                                System.out.print(". ");
+                            }
+                        }
+                        System.out.println();
+                        Thread.sleep(100);
+                    }
+                    k++;
                 }
-            }
-            System.out.println();
-        }
-        k++;
-        }
-        break;
+                break;
 
-        case 0:
-            a = 0;
-            break;
-    }
-    } while(a != 0);
+            case 0:
+                a = 0;
+                break;
+        }
+    } while (a != 0);
 
 //         for (int i = 0; i < n; i++) {
 //             for (int j = 0; j < n; j++) {
@@ -98,9 +97,10 @@ public class Main {
 //             }
 //             System.out.println();
 //         }
-        sc.close();
-     }
+    sc.close();
 }
+
+
         
        
     
